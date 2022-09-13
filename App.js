@@ -10,7 +10,7 @@ import createApolloClient from "./src/utils/apolloClient";
 const apolloClient = createApolloClient();
 
 export default function App() {
-  console.log(Constants.manifest.extra.env.uri);
+  console.log(Constants.manifest.extra.uri);
 
   return (
     <>
