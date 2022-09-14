@@ -1,15 +1,14 @@
-const SignIn = () => {
-  const [signIn] = useSignIn();
+import { useMutation } from "@apollo/client";
+import { SIGN_IN } from "../graphql/mutations";
 
-  const onSubmit = async (values) => {
-    const { username, password } = values;
+export const useSignIn = () => {
+  const [mutate, result] = useMutation(SIGN_IN);
 
-    try {
-      const { data } = await signIn({ username, password });
-      console.log(data);
-    } catch (e) {
-      console.log(e);
-    }
+  const signIn = async ({ username, password }) => {
+    // call the mutate function here with the right arguments
+    const { data } = await mutate({ variables: { username, password } });
+    // await mutate({ variables: { username, password } });
+    console.log(data);
   };
 
   return [signIn, result];
